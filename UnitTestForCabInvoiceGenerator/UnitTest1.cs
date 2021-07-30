@@ -52,5 +52,20 @@ namespace UnitTestForCabInvoiceGenerator
             InvoiceSummary expectedSummary = new InvoiceSummary(2, 67);
             Assert.AreEqual(summary, expectedSummary);
         }
+        [TestMethod]
+        [TestCategory("UC 4")]
+        public void GivenUserIdAndReturnFare()
+        {
+            Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+            RideRepository rideRepository = new RideRepository();
+            rideRepository.AddRide(1, rides);
+            var rideArray = rideRepository.GetRides(1);
+            InvoiceGenerator invoice = new InvoiceGenerator(RideType.NORAML);
+
+            InvoiceSummary summary = new InvoiceSummary(2, 30.0);
+            InvoiceSummary expected = invoice.CalculateFare(rideArray);
+            Assert.AreEqual(summary, expected);
+        }
+
     }
 }

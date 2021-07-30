@@ -9,6 +9,7 @@ namespace CabInvoiceGenerator
     public class InvoiceGenerator
     {
         RideType rideType;
+        public RideRepository rideRepository;
         //creating values for readonly mode
         private readonly double MINIMUM_COST_PER_KM;
         private readonly int COST_PER_TIME;
@@ -18,6 +19,7 @@ namespace CabInvoiceGenerator
         public InvoiceGenerator(RideType rideType)
         {
             this.rideType = rideType;
+            this.rideRepository = new RideRepository();
             try
             {
                 this.MINIMUM_COST_PER_KM = 10;
