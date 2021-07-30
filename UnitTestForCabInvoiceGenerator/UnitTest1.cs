@@ -31,7 +31,7 @@ namespace UnitTestForCabInvoiceGenerator
         }
         [TestMethod]
         [TestCategory("UC 3")]
-        public void GivenMultipleRidesShouldReturnInvoiceSummary()
+        public void GivenMultipleRidesShouldReturnInvoiceSummaryUsingOverrideEqualMethod()
         {
             InvoiceGenerator invoiceGenerator = new InvoiceGenerator(RideType.NORAML);
             Ride[] rides = { new Ride(2.0, 4), new Ride(3.9, 4) };
@@ -41,6 +41,16 @@ namespace UnitTestForCabInvoiceGenerator
             //because both objects are in diffrent address but they belong to same class
             var res = summary.Equals(expectedSummary);
             Assert.IsTrue(res);
+        }
+        [TestMethod]
+        [TestCategory("UC 3")]
+        public void GivenMultipleRidesShouldReturnInvoiceSummaryUsingAreequal()
+        {
+            InvoiceGenerator invoiceGenerator = new InvoiceGenerator(RideType.NORAML);
+            Ride[] rides = { new Ride(2.0, 4), new Ride(3.9, 4) };
+            InvoiceSummary summary = invoiceGenerator.CalculateFare(rides);
+            InvoiceSummary expectedSummary = new InvoiceSummary(2, 67);
+            Assert.AreEqual(summary, expectedSummary);
         }
     }
 }
