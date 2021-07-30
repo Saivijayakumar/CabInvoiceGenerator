@@ -25,9 +25,11 @@ namespace UnitTestForCabInvoiceGenerator
         {
             InvoiceGenerator invoiceGenerator = new InvoiceGenerator(RideType.NORAML);
             Ride[] rides = { new Ride(2.0, 4), new Ride(3.9, 4) };
-            InvoiceSummary summary = invoiceGenerator.CalculateFare(rides);
-            InvoiceSummary expectedSummary = new InvoiceSummary(2, 67);
-            Assert.AreEqual(summary.totalFare, expectedSummary.totalFare);
+            //calculateing fare for list of rides
+            double summary = invoiceGenerator.CalculateFare(rides);
+            double expectedSummary = 67;
+            Assert.AreEqual(summary, expectedSummary);
         }
+
     }
 }
