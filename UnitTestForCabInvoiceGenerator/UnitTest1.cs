@@ -19,5 +19,15 @@ namespace UnitTestForCabInvoiceGenerator
             double excepted = 43;
             Assert.AreEqual(excepted, fare);
         }
+        [TestMethod]
+        [TestCategory("UC 2")]
+        public void GivenMultipleRidesShouldReturnInvoiceSummary()
+        {
+            InvoiceGenerator invoiceGenerator = new InvoiceGenerator(RideType.NORAML);
+            Ride[] rides = { new Ride(2.0, 4), new Ride(3.9, 4) };
+            InvoiceSummary summary = invoiceGenerator.CalculateFare(rides);
+            InvoiceSummary expectedSummary = new InvoiceSummary(2, 67);
+            Assert.AreEqual(summary.totalFare, expectedSummary.totalFare);
+        }
     }
 }
