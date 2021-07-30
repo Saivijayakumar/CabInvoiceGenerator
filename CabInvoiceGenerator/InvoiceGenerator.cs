@@ -22,9 +22,19 @@ namespace CabInvoiceGenerator
             this.rideRepository = new RideRepository();
             try
             {
-                this.MINIMUM_COST_PER_KM = 10;
-                this.COST_PER_TIME = 1;
-                this.MINIMUM_FARE = 5;
+                if(rideType.Equals(RideType.NORAML))
+                {
+                    this.MINIMUM_COST_PER_KM = 10;
+                    this.COST_PER_TIME = 1;
+                    this.MINIMUM_FARE = 5;
+                }
+                if(rideType.Equals(RideType.Premium))
+                {
+                    this.MINIMUM_COST_PER_KM = 15;
+                    this.COST_PER_TIME = 1;
+                    this.MINIMUM_FARE = 20;
+                }
+                
             }
             catch(CabInvoiceException)
             {

@@ -66,6 +66,18 @@ namespace UnitTestForCabInvoiceGenerator
             InvoiceSummary expected = invoice.CalculateFare(rideArray);
             Assert.AreEqual(summary, expected);
         }
+        [TestMethod]
+        [TestCategory("UC5")]
+        public void GivenDistanceAndTimeShouldReturnTotalFareForPremium()
+        {
+            InvoiceGenerator invoiceGenerator = new InvoiceGenerator(RideType.Premium);
+            double distance = 3.9;
+            int time = 4;
+            //calculating fare for Premium
+            double fare = invoiceGenerator.CalculateFare(distance, time);
+            double excepted = 62.5;
+            Assert.AreEqual(excepted, fare);
+        }
 
     }
 }

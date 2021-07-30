@@ -8,6 +8,6 @@ namespace CabInvoiceGenerator
 {
     public enum RideType
     {
-        NORAML
+        NORAML,Premium
     }
 }
